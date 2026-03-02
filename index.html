@@ -398,7 +398,7 @@
       </div>
 
       <div class="contact-email-note">
-        <strong>Prefer email?</strong> Reach us directly at <span class="email-link"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ae2efe6e6e5cae9e5f9fee9e6eff8e1a4e9e5e7">[email&#160;protected]</a></span>
+        <strong>Prefer email?</strong> Reach us directly at <span class="email-link">hello@costclerk.com</span>
       </div>
     </div>
   </div>
@@ -434,7 +434,7 @@
       <p>CostClerk is built and operated in Malaysia, for Malaysian contractors. If you have questions, feedback, or just want to talk about how your business handles invoices, we'd love to hear from you.</p>
 
       <div class="about-email">
-        <strong>Get in touch:</strong> <span class="email-link"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29a979e9e9db2919d8186919e978099dc919d9f">[email&#160;protected]</a></span>
+        <strong>Get in touch:</strong> <span class="email-link">hello@costclerk.com</span>
       </div>
     </div>
   </div>
@@ -463,7 +463,7 @@
     <div class="footer-bottom">© 2026 CostClerk. All rights reserved.</div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // FAQ data
     const faqs = [
       { q: "How does CostClerk work?", a: "You forward invoice emails (with PDF or image attachments) to your dedicated CostClerk address. Our AI reads every line item, categorises it, and emails you back a project-by-project cost breakdown as a CSV file within minutes." },
@@ -542,4 +542,13 @@
 
     // Contact form
     function submitForm() {
-      const
+      const name = document.getElementById('field-name').value.trim();
+      const email = document.getElementById('field-email').value.trim();
+      if (name && email) {
+        document.getElementById('form-fields').classList.remove('visible');
+        document.getElementById('form-success').classList.add('visible');
+      }
+    }
+  </script>
+</body>
+</html>
