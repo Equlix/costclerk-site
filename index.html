@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CostClerk — Invoice Automation for Contractors</title>
+  <title>CostClerk | Invoice Automation for Contractors</title>
   <meta name="description" content="Forward your invoices, get a project-by-project cost breakdown. AI-powered invoice automation for Malaysian contractors." />
-  <meta property="og:title" content="CostClerk — Invoice Automation for Contractors" />
+  <meta property="og:title" content="CostClerk | Invoice Automation for Contractors" />
   <meta property="og:description" content="Forward your invoices, get a project-by-project cost breakdown in minutes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://costclerk.com" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232D6A4F'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Georgia' font-size='20' font-weight='bold'>C</text></svg>" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     ::selection { background: #D5F0EB; color: #1A5248; }
-    body { font-family: 'DM Sans', Helvetica, sans-serif; background: #FAFCFB; color: #1A1A18; }
+    body { font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; background: #FAFCFB; color: #1A1A18; }
     a { color: inherit; text-decoration: none; }
 
     /* Nav */
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #DEE8E5; }
     .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { cursor: pointer; display: flex; align-items: center; gap: 10px; }
-    .nav-logo-icon { width: 32px; height: 32px; border-radius: 8px; background: #2A7D6E; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 15px; font-family: 'DM Serif Display', Georgia, serif; }
-    .nav-logo-text { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; font-weight: 700; color: #1A1A18; letter-spacing: -0.02em; }
+    .nav-logo-icon { width: 32px; height: 32px; border-radius: 8px; background: #2A7D6E; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 15px; font-family: 'Libre Baskerville', Georgia, serif; }
+    .nav-logo-text { font-family: 'Libre Baskerville', Georgia, serif; font-size: 20px; font-weight: 400; color: #1A1A18; letter-spacing: -0.01em; }
     .nav-links { display: flex; gap: 4px; align-items: center; }
-    .nav-link { background: transparent; border: none; border-radius: 6px; padding: 8px 16px; font-size: 14px; font-family: 'DM Sans', Helvetica, sans-serif; color: #6B6960; font-weight: 400; cursor: pointer; transition: all 0.2s; }
+    .nav-link { background: transparent; border: none; border-radius: 6px; padding: 8px 16px; font-size: 14px; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; color: #6B6960; font-weight: 400; cursor: pointer; transition: all 0.2s; }
     .nav-link:hover { color: #1A1A18; background: #EFF6F4; }
     .nav-link.active { color: #1A1A18; font-weight: 600; background: #EFF6F4; }
     .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
@@ -40,54 +40,81 @@
     /* Layout */
     .page { max-width: 1120px; margin: 0 auto; padding: 104px 32px 80px; min-height: 100vh; }
     .page.hidden { display: none; }
-    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #2A7D6E; background: #D5F0EB; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
-    .page-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(32px, 4vw, 44px); font-weight: 700; color: #1A1A18; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2A7D6E; border: 1.5px solid #B8DDD5; padding: 5px 12px; border-radius: 4px; margin-bottom: 20px; }
+    .page-title { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(32px, 4vw, 44px); font-weight: 400; color: #1A1A18; margin-bottom: 12px; letter-spacing: -0.02em; }
     .page-subtitle { font-size: 17px; line-height: 1.7; color: #6B6960; }
 
     /* Buttons */
-    .btn-primary { background: #2A7D6E; color: #fff; border: none; border-radius: 8px; padding: 14px 32px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', Helvetica, sans-serif; transition: all 0.2s; }
-    .btn-primary:hover { background: #1A5248; }
-    .btn-secondary { background: transparent; color: #1A1A18; border: 1.5px solid #DEE8E5; border-radius: 8px; padding: 14px 32px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', Helvetica, sans-serif; transition: all 0.2s; }
+    .btn-primary { background: #1A5248; color: #fff; border: none; border-radius: 6px; padding: 13px 28px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; transition: all 0.2s; letter-spacing: -0.01em; }
+    .btn-primary:hover { background: #143F38; }
+    .btn-secondary { background: transparent; color: #1A1A18; border: 1.5px solid #C8D4D0; border-radius: 6px; padding: 13px 28px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; transition: all 0.2s; letter-spacing: -0.01em; }
     .btn-secondary:hover { border-color: #2A7D6E; color: #2A7D6E; }
 
     /* Cards */
-    .card { background: #FFFFFF; border: 1px solid #DEE8E5; border-radius: 12px; padding: 32px; }
+    .card { background: #FFFFFF; border: 1px solid #DEE8E5; border-radius: 10px; padding: 32px; }
 
-    /* Home hero */
-    .hero { text-align: center; max-width: 700px; margin: 0 auto 80px; padding-top: 40px; }
-    .hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.1; color: #1A1A18; margin-bottom: 20px; letter-spacing: -0.02em; }
-    .hero p { font-size: 18px; line-height: 1.7; color: #6B6960; max-width: 520px; margin: 0 auto 36px; }
-    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    /* ===== HOME HERO — left-aligned, asymmetric ===== */
+    .hero { max-width: 620px; padding-top: 48px; margin-bottom: 100px; }
+    .hero h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(33px, 4.5vw, 48px); font-weight: 400; line-height: 1.12; color: #1A1A18; margin-bottom: 20px; letter-spacing: -0.025em; }
+    .hero p { font-size: 17px; line-height: 1.75; color: #6B6960; max-width: 480px; margin: 0 0 32px; }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-eyebrow { font-size: 13px; font-weight: 500; color: #2A7D6E; margin-bottom: 16px; letter-spacing: 0.01em; }
 
-    /* Value props grid */
-    .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 80px; }
-    .value-card-icon { font-size: 28px; margin-bottom: 16px; }
-    .value-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #1A1A18; }
-    .value-card p { font-size: 15px; line-height: 1.7; color: #6B6960; margin: 0; }
+    /* ===== VALUE PROPS — varied layout, not uniform grid ===== */
+    .value-section { margin-bottom: 120px; }
+    .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .value-card { padding: 28px 28px 24px; }
+    .value-card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .value-card-icon.icon-email { background: #D5F0EB; }
+    .value-card-icon.icon-ai { background: #FFF3E0; }
+    .value-card-icon.icon-report { background: #E8EDF6; }
+    .value-card h3 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 19px; font-weight: 400; margin-bottom: 6px; color: #1A1A18; }
+    .value-card p { font-size: 14.5px; line-height: 1.65; color: #6B6960; margin: 0; }
+    /* Make the first card span full width for asymmetry */
+    .value-card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; padding: 32px; background: #F6FAF9; border-color: #C8DDD7; }
+    .value-card:first-child .value-card-icon { margin-bottom: 0; }
+    .value-card:first-child h3 { font-size: 21px; }
+    .value-card:first-child p { max-width: 520px; }
 
-    /* Trust strip */
-    .trust-strip { background: #EFF6F4; border-radius: 16px; padding: 48px 40px; text-align: center; margin-bottom: 80px; }
-    .trust-strip h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 24px; font-weight: 700; color: #1A1A18; margin-bottom: 8px; line-height: 1.4; }
+    @media (max-width: 640px) {
+      .value-grid { grid-template-columns: 1fr; }
+      .value-card:first-child { grid-template-columns: 1fr; }
+    }
+
+    /* Trust strip — left-aligned with accent bar, not centered */
+    .trust-strip { border: 1.5px solid #C8DDD7; border-radius: 10px; padding: 40px 36px; margin-bottom: 64px; display: flex; align-items: flex-start; gap: 24px; }
+    .trust-strip-marker { flex-shrink: 0; width: 4px; height: 48px; border-radius: 2px; background: #2A7D6E; margin-top: 2px; }
+    .trust-strip h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 22px; font-weight: 400; color: #1A1A18; margin-bottom: 6px; line-height: 1.3; }
     .trust-strip p { font-size: 15px; color: #6B6960; margin: 0; line-height: 1.7; }
 
-    /* CTA section */
-    .cta-section { text-align: center; padding-bottom: 40px; }
-    .cta-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 32px; font-weight: 700; color: #1A1A18; margin-bottom: 12px; }
-    .cta-section p { font-size: 16px; color: #6B6960; margin-bottom: 28px; }
+    @media (max-width: 640px) {
+      .trust-strip { flex-direction: column; gap: 16px; padding: 28px 24px; }
+      .trust-strip-marker { width: 40px; height: 4px; }
+    }
+
+    /* CTA section — horizontal layout, different spacing */
+    .cta-section { padding: 48px 0 40px; border-top: 1px solid #E8F0EE; }
+    .cta-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .cta-text h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 26px; font-weight: 400; color: #1A1A18; margin-bottom: 4px; }
+    .cta-text p { font-size: 15px; color: #6B6960; margin: 0; }
+
+    @media (max-width: 640px) {
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+    }
 
     /* How it works steps */
     .steps-container { max-width: 640px; margin: 0 auto; }
     .step { display: flex; gap: 32px; padding-bottom: 48px; padding-left: 32px; position: relative; border-left: 2px solid #DEE8E5; margin-left: 19px; }
     .step:last-child { border-left-color: transparent; padding-bottom: 0; }
-    .step-num { position: absolute; left: -20px; width: 40px; height: 40px; border-radius: 50%; background: #2A7D6E; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
-    .step h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; font-weight: 700; color: #1A1A18; margin-bottom: 8px; }
+    .step-num { position: absolute; left: -20px; width: 40px; height: 40px; border-radius: 50%; background: #1A5248; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; letter-spacing: -0.02em; }
+    .step h3 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 22px; font-weight: 400; color: #1A1A18; margin-bottom: 8px; }
     .step p { font-size: 15px; line-height: 1.7; color: #6B6960; margin-bottom: 10px; }
-    .step-detail { font-size: 13px; line-height: 1.6; color: #2A7D6E; background: #D5F0EB; display: inline-block; padding: 6px 14px; border-radius: 6px; }
+    .step-detail { font-size: 13px; line-height: 1.6; color: #2A7D6E; background: #EBF6F3; display: inline-block; padding: 6px 14px; border-radius: 4px; }
 
     /* Sample table */
     .sample-output { margin-top: 64px; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .sample-output h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 24px; font-weight: 700; color: #1A1A18; margin-bottom: 20px; }
-    .sample-table-wrap { background: #FFFFFF; border: 1px solid #DEE8E5; border-radius: 12px; overflow: hidden; }
+    .sample-output h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 24px; font-weight: 400; color: #1A1A18; margin-bottom: 20px; }
+    .sample-table-wrap { background: #FFFFFF; border: 1px solid #DEE8E5; border-radius: 10px; overflow: hidden; }
     .sample-table-header { background: #EFF6F4; padding: 12px 20px; border-bottom: 1px solid #DEE8E5; font-size: 13px; color: #6B6960; }
     .sample-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .sample-table th { padding: 10px 16px; text-align: left; font-weight: 600; color: #1A1A18; background: #EFF6F4; border-bottom: 1px solid #DEE8E5; white-space: nowrap; }
@@ -99,11 +126,11 @@
 
     /* Pricing */
     .pricing-center { text-align: center; max-width: 600px; margin: 0 auto; }
-    .pricing-card { background: #FFFFFF; border: 2px solid #2A7D6E; border-radius: 16px; padding: 48px 40px; max-width: 420px; margin: 0 auto 48px; text-align: center; }
-    .pricing-label { font-size: 13px; font-weight: 600; color: #2A7D6E; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .pricing-card { background: #FFFFFF; border: 2px solid #2A7D6E; border-radius: 12px; padding: 44px 36px; max-width: 420px; margin: 0 auto 48px; text-align: center; }
+    .pricing-label { font-size: 12px; font-weight: 600; color: #2A7D6E; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
     .pricing-amount { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 8px; }
     .pricing-currency { font-size: 14px; font-weight: 500; color: #6B6960; align-self: flex-start; padding-top: 12px; }
-    .pricing-number { font-family: 'DM Serif Display', Georgia, serif; font-size: 64px; font-weight: 700; color: #1A1A18; line-height: 1; }
+    .pricing-number { font-family: 'Libre Baskerville', Georgia, serif; font-size: 64px; font-weight: 400; color: #1A1A18; line-height: 1; }
     .pricing-period { font-size: 15px; color: #6B6960; }
     .pricing-cancel { font-size: 14px; color: #6B6960; margin-bottom: 32px; }
     .pricing-features { text-align: left; margin-bottom: 32px; }
@@ -111,30 +138,32 @@
     .pricing-feature:last-child { border-bottom: none; }
     .pricing-feature span { font-size: 14px; color: #1A1A18; }
     .pricing-check { flex-shrink: 0; margin-top: 1px; }
-    .pricing-note { background: #EFF6F4; border-radius: 12px; padding: 24px 32px; max-width: 420px; margin: 0 auto; }
+    .pricing-note { background: #F6FAF9; border: 1px solid #DEE8E5; border-radius: 10px; padding: 24px 32px; max-width: 420px; margin: 0 auto; }
     .pricing-note p { font-size: 14px; color: #6B6960; margin: 0; line-height: 1.7; }
     .pricing-note strong { color: #1A1A18; }
 
-    /* FAQ */
+    /* ===== FAQ — restyled, less accordion-like ===== */
     .faq-list { max-width: 640px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid #DEE8E5; }
-    .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left; gap: 16px; }
-    .faq-question span { font-size: 16px; font-weight: 600; color: #1A1A18; }
+    .faq-item { border-bottom: 1px solid #E8F0EE; }
+    .faq-item:first-child { border-top: 1px solid #E8F0EE; }
+    .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px 0; background: none; border: none; cursor: pointer; text-align: left; gap: 16px; }
+    .faq-question span { font-size: 15px; font-weight: 600; color: #1A1A18; }
     .faq-icon { flex-shrink: 0; transition: transform 0.2s; }
     .faq-icon.open { transform: rotate(45deg); }
-    .faq-answer { padding: 0 0 20px; font-size: 15px; line-height: 1.7; color: #6B6960; display: none; }
+    .faq-answer { padding: 0 0 18px; font-size: 14.5px; line-height: 1.7; color: #6B6960; display: none; }
     .faq-answer.open { display: block; }
+    .faq-count { font-size: 13px; color: #6B6960; margin-bottom: 32px; }
 
     /* Contact */
     .contact-form { max-width: 520px; margin: 0 auto; }
     .form-group { margin-bottom: 20px; }
     .form-label { display: block; font-size: 13px; font-weight: 600; color: #1A1A18; margin-bottom: 6px; }
-    .form-input { width: 100%; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', Helvetica, sans-serif; border: 1.5px solid #DEE8E5; border-radius: 8px; background: #FFFFFF; color: #1A1A18; outline: none; box-sizing: border-box; transition: border-color 0.2s; }
+    .form-input { width: 100%; padding: 12px 16px; font-size: 15px; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; border: 1.5px solid #DEE8E5; border-radius: 6px; background: #FFFFFF; color: #1A1A18; outline: none; box-sizing: border-box; transition: border-color 0.2s; }
     .form-input:focus { border-color: #2A7D6E; }
     .form-textarea { min-height: 100px; resize: vertical; }
-    .form-success { background: #D5F0EB; border: 1.5px solid #2A7D6E; border-radius: 12px; padding: 32px; text-align: center; display: none; }
+    .form-success { background: #D5F0EB; border: 1.5px solid #2A7D6E; border-radius: 10px; padding: 32px; text-align: center; display: none; }
     .form-success.visible { display: block; }
-    .form-success h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; color: #1A1A18; margin: 12px 0 8px; }
+    .form-success h3 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 22px; color: #1A1A18; margin: 12px 0 8px; }
     .form-success p { font-size: 15px; color: #6B6960; margin: 0; }
     .form-fields { display: none; }
     .form-fields.visible { display: block; }
@@ -145,8 +174,8 @@
     /* About */
     .about-content { max-width: 640px; margin: 0 auto; }
     .about-content p { font-size: 16px; line-height: 1.8; color: #6B6960; margin-bottom: 1em; }
-    .about-values { background: #EFF6F4; border-radius: 12px; padding: 32px; margin: 40px 0; }
-    .about-values h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; font-weight: 700; color: #1A1A18; margin-bottom: 16px; }
+    .about-values { background: #F6FAF9; border: 1px solid #DEE8E5; border-radius: 10px; padding: 32px; margin: 40px 0; }
+    .about-values h3 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 20px; font-weight: 400; color: #1A1A18; margin-bottom: 16px; }
     .about-value { margin-bottom: 16px; }
     .about-value:last-child { margin-bottom: 0; }
     .about-value strong { color: #1A1A18; font-size: 15px; }
@@ -156,13 +185,13 @@
     .about-email .email-link { color: #2A7D6E; font-weight: 500; }
 
     /* Footer */
-    .footer { border-top: 1px solid #DEE8E5; background: #EFF6F4; }
+    .footer { border-top: 1px solid #DEE8E5; background: #F4F8F6; }
     .footer-inner { max-width: 1120px; margin: 0 auto; padding: 48px 32px 32px; display: flex; flex-wrap: wrap; gap: 40px 64px; justify-content: space-between; }
-    .footer-brand { font-family: 'DM Serif Display', Georgia, serif; font-size: 18px; font-weight: 700; color: #1A1A18; margin-bottom: 8px; }
+    .footer-brand { font-family: 'Libre Baskerville', Georgia, serif; font-size: 18px; font-weight: 400; color: #1A1A18; margin-bottom: 8px; }
     .footer-desc { font-size: 13px; color: #6B6960; margin: 0; line-height: 1.7; max-width: 280px; }
     .footer-columns { display: flex; gap: 48px; }
     .footer-col-title { font-size: 12px; font-weight: 700; color: #1A1A18; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
-    .footer-link { display: block; background: none; border: none; color: #6B6960; font-size: 13px; padding: 4px 0; cursor: pointer; font-family: 'DM Sans', Helvetica, sans-serif; }
+    .footer-link { display: block; background: none; border: none; color: #6B6960; font-size: 13px; padding: 4px 0; cursor: pointer; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; }
     .footer-link:hover { color: #2A7D6E; }
     .footer-bottom { max-width: 1120px; margin: 0 auto; padding: 16px 32px; border-top: 1px solid #DEE8E5; font-size: 12px; color: #6B6960; }
   </style>
@@ -200,8 +229,9 @@
 
   <!-- HOME -->
   <div class="page" id="page-home">
+    <!-- Hero: left-aligned, not centered -->
     <div class="hero">
-      <div class="section-label">Invoice automation for contractors</div>
+      <p class="hero-eyebrow">Invoice automation for contractors</p>
       <h1>Forward your invoices.<br>Get a cost breakdown.</h1>
       <p>CostClerk reads your invoices, categorises every line item, and emails you a clean project-by-project cost summary. No app to install, no data entry.</p>
       <div class="hero-buttons">
@@ -210,33 +240,53 @@
       </div>
     </div>
 
-    <div class="value-grid">
-      <div class="card value-card">
-        <div class="value-card-icon">📧</div>
-        <h3>Email-first</h3>
-        <p>Forward invoices to your CostClerk address. That's it — no app, no login, no uploads.</p>
-      </div>
-      <div class="card value-card">
-        <div class="value-card-icon">🤖</div>
-        <h3>AI-powered parsing</h3>
-        <p>Every line item is read, categorised, and matched to the right project automatically.</p>
-      </div>
-      <div class="card value-card">
-        <div class="value-card-icon">📊</div>
-        <h3>Cost reports in minutes</h3>
-        <p>Receive a clean CSV breakdown by project — materials, labour, transport — within minutes of forwarding.</p>
+    <!-- Value props: asymmetric grid, first card full-width -->
+    <div class="value-section">
+      <div class="value-grid">
+        <div class="card value-card">
+          <div class="value-card-icon icon-email">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="3.5" width="16" height="11" rx="2" stroke="#2A7D6E" stroke-width="1.6"/><path d="M1.5 4.5L9 10L16.5 4.5" stroke="#2A7D6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h3>Email-first workflow</h3>
+            <p>Forward invoices to your CostClerk address. No app, no login, no uploads. Your inbox is the interface.</p>
+          </div>
+        </div>
+        <div class="card value-card">
+          <div class="value-card-icon icon-ai">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#C47A20" stroke-width="1.6"/><circle cx="9" cy="9" r="3" stroke="#C47A20" stroke-width="1.6"/><line x1="9" y1="2" x2="9" y2="5" stroke="#C47A20" stroke-width="1.6" stroke-linecap="round"/><line x1="9" y1="13" x2="9" y2="16" stroke="#C47A20" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>AI-powered parsing</h3>
+          <p>Every line item is read, categorised, and matched to the right project automatically.</p>
+        </div>
+        <div class="card value-card">
+          <div class="value-card-icon icon-report">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2.5" y="1.5" width="13" height="15" rx="2" stroke="#4A5E8A" stroke-width="1.6"/><line x1="5.5" y1="6" x2="12.5" y2="6" stroke="#4A5E8A" stroke-width="1.6" stroke-linecap="round"/><line x1="5.5" y1="9.5" x2="10" y2="9.5" stroke="#4A5E8A" stroke-width="1.6" stroke-linecap="round"/><line x1="5.5" y1="13" x2="8" y2="13" stroke="#4A5E8A" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Cost reports in minutes</h3>
+          <p>Get a clean CSV breakdown by project, split by materials, labour, and transport.</p>
+        </div>
       </div>
     </div>
 
+    <!-- Trust strip: left-aligned with accent bar -->
     <div class="trust-strip">
-      <h2>Built for Malaysian contractors</h2>
-      <p>CostClerk understands local invoice formats, works in MYR by default, and processes invoices from suppliers across Malaysia.</p>
+      <div class="trust-strip-marker"></div>
+      <div>
+        <h2>Built for Malaysian contractors</h2>
+        <p>CostClerk understands local invoice formats, works in MYR by default, and processes invoices from suppliers across Malaysia.</p>
+      </div>
     </div>
 
+    <!-- CTA: horizontal layout, not centered block -->
     <div class="cta-section">
-      <h2>Ready to stop tracking costs by hand?</h2>
-      <p>Get started in under 5 minutes. No software to install.</p>
-      <button class="btn-primary" onclick="navigateTo('contact')">Get Started — RM49/month</button>
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2>Ready to stop tracking costs by hand?</h2>
+          <p>Get started in under 5 minutes. No software to install.</p>
+        </div>
+        <button class="btn-primary" onclick="navigateTo('contact')">Get Started · RM49/month</button>
+      </div>
     </div>
   </div>
 
@@ -245,30 +295,30 @@
     <div class="steps-container">
       <div class="section-label">How it works</div>
       <h1 class="page-title">Three steps. No app required.</h1>
-      <p class="page-subtitle" style="margin-bottom: 56px;">CostClerk works entirely through email. There's nothing to download, no dashboard to log into, and no data to enter manually.</p>
+      <p class="page-subtitle" style="margin-bottom: 56px;">CostClerk works entirely through email. Nothing to download, no dashboard to log into, and no manual data entry.</p>
 
       <div class="step">
         <div class="step-num">01</div>
         <div>
           <h3>Forward your invoices</h3>
-          <p>When you receive an invoice from a supplier — PDF, photo, scan — just forward the email to your CostClerk address. That's the only step you need to do.</p>
-          <span class="step-detail">Supports PDF, PNG, JPG, WEBP, and TIFF attachments up to 10MB.</span>
+          <p>When you receive an invoice from a supplier (PDF, photo, or scan), just forward the email to your CostClerk address. That's the only action required on your end.</p>
+          <span class="step-detail">Supports PDF, PNG, JPG, WEBP, and TIFF up to 10MB.</span>
         </div>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div>
           <h3>AI reads every line item</h3>
-          <p>CostClerk's AI engine extracts the supplier name, invoice number, every line item, amounts, and project references from the document — even non-standard layouts.</p>
-          <span class="step-detail">Each item is categorised automatically: materials, labour, transport, or other.</span>
+          <p>CostClerk's engine extracts the supplier name, invoice number, every line item, amounts, and project references from the document. Even non-standard layouts are handled.</p>
+          <span class="step-detail">Each item is auto-categorised: materials, labour, transport, or other.</span>
         </div>
       </div>
       <div class="step" style="border-left-color: transparent; padding-bottom: 0;">
         <div class="step-num">03</div>
         <div>
           <h3>You get a cost breakdown</h3>
-          <p>Within minutes, you receive an email back with a CSV attachment — a clean project-by-project summary showing exactly where your money is going.</p>
-          <span class="step-detail">Open it in Excel or Google Sheets. Columns: Project, Materials, Labour, Transport, Other, Total.</span>
+          <p>Within minutes, you receive an email with a CSV attachment. It's a clean, project-by-project summary showing where your money is going.</p>
+          <span class="step-detail">Open in Excel or Google Sheets. Columns: Project, Materials, Labour, Transport, Other, Total.</span>
         </div>
       </div>
     </div>
@@ -338,7 +388,7 @@
           </div>
           <div class="pricing-feature">
             <svg class="pricing-check" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#D5F0EB"/><path d="M5.5 9L8 11.5L12.5 6.5" stroke="#2A7D6E" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>MYR default — all currencies supported</span>
+            <span>MYR default, all currencies supported</span>
           </div>
           <div class="pricing-feature" style="border-bottom: none;">
             <svg class="pricing-check" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#D5F0EB"/><path d="M5.5 9L8 11.5L12.5 6.5" stroke="#2A7D6E" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -359,7 +409,8 @@
   <div class="page hidden" id="page-faq">
     <div class="faq-list">
       <div class="section-label">FAQ</div>
-      <h1 class="page-title" style="margin-bottom: 48px;">Frequently asked questions</h1>
+      <h1 class="page-title">Frequently asked questions</h1>
+      <p class="faq-count">10 questions</p>
       <div id="faq-container"></div>
     </div>
   </div>
@@ -398,7 +449,7 @@
       </div>
 
       <div class="contact-email-note">
-        <strong>Prefer email?</strong> Reach us directly at <span class="email-link">hello@costclerk.com</span>
+        <strong>Prefer email?</strong> Reach us directly at <span class="email-link"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5038353c3c3f10333f2324333c35223b7e333f3d">[email&#160;protected]</a></span>
       </div>
     </div>
   </div>
@@ -409,11 +460,11 @@
       <div class="section-label">About</div>
       <h1 class="page-title" style="margin-bottom: 20px;">Why CostClerk exists</h1>
 
-      <p>Contractors deal with dozens of invoices every week — from material suppliers, subcontractors, transport providers, and more. Most of them end up in an inbox or a shoebox, and the actual cost picture only becomes clear at the end of the month when someone sits down with a spreadsheet and starts entering numbers by hand.</p>
+      <p>Contractors deal with dozens of invoices every week, from material suppliers, subcontractors, and transport providers. Most of them end up in an inbox or a shoebox. The actual cost picture only becomes clear at the end of the month when someone sits down with a spreadsheet and starts entering numbers by hand.</p>
 
-      <p>CostClerk was built to eliminate that manual work entirely. Instead of tracking costs after the fact, contractors can forward invoices as they arrive and get an up-to-date cost breakdown in minutes — by project, by category, with every line item accounted for.</p>
+      <p>CostClerk was built to eliminate that manual work. Instead of tracking costs after the fact, contractors can forward invoices as they arrive and get an up-to-date breakdown in minutes, split by project and category, with every line item accounted for.</p>
 
-      <p>The system is designed to be as simple as possible. There's no software to install, no app to learn, and no dashboard to check. It works through email because that's where invoices already live. Forward the email, get the report.</p>
+      <p>The system is deliberately simple. There's no software to install, no app to learn, and no dashboard to check. It works through email because that's where invoices already live. Forward the email, get the report.</p>
 
       <div class="about-values">
         <h3>What we believe</h3>
@@ -434,7 +485,7 @@
       <p>CostClerk is built and operated in Malaysia, for Malaysian contractors. If you have questions, feedback, or just want to talk about how your business handles invoices, we'd love to hear from you.</p>
 
       <div class="about-email">
-        <strong>Get in touch:</strong> <span class="email-link">hello@costclerk.com</span>
+        <strong>Get in touch:</strong> <span class="email-link"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="660e030a0a092605091512050a03140d4805090b">[email&#160;protected]</a></span>
       </div>
     </div>
   </div>
@@ -463,17 +514,17 @@
     <div class="footer-bottom">© 2026 CostClerk. All rights reserved.</div>
   </footer>
 
-  <script>
-    // FAQ data
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // FAQ data — em-dashes removed from answers where possible
     const faqs = [
       { q: "How does CostClerk work?", a: "You forward invoice emails (with PDF or image attachments) to your dedicated CostClerk address. Our AI reads every line item, categorises it, and emails you back a project-by-project cost breakdown as a CSV file within minutes." },
-      { q: "What file types are supported?", a: "CostClerk accepts PDF, PNG, JPG, JPEG, WEBP, and TIFF attachments up to 10MB. Scanned invoices and photos of printed invoices both work — the AI uses vision processing for non-digital documents." },
+      { q: "What file types are supported?", a: "CostClerk accepts PDF, PNG, JPG, JPEG, WEBP, and TIFF attachments up to 10MB. Scanned invoices and photos of printed invoices both work. The AI uses vision processing for non-digital documents." },
       { q: "Do I need to install any software?", a: "No. CostClerk works entirely through email. There's no app, no dashboard, and no software to install. If you can forward an email, you can use CostClerk." },
       { q: "How are costs categorised?", a: "Each line item is automatically categorised as materials, labour, transport, or other. The AI infers categories from the item description, so even invoices without explicit categories are handled correctly." },
       { q: "What if an invoice doesn't have a project reference?", a: 'Invoices without a job number are grouped under "Unassigned" in your report, with a flag so you know to check them. You won\'t miss anything.' },
-      { q: "What currency does CostClerk use?", a: "MYR by default, but the AI detects and reports the currency shown on each invoice. The CSV report is currency-neutral — amounts are numbers without currency symbols — so it works regardless of the currency." },
-      { q: "Is my data secure?", a: "Only whitelisted email addresses can send invoices to your CostClerk account. Emails from unknown senders are silently discarded — they never touch the system. Your invoices are processed and not stored beyond what's needed for reporting." },
-      { q: "What happens if the AI gets something wrong?", a: 'Each parsed invoice includes a confidence score. If any line item has low confidence, it\'s flagged in the "Needs Review" column of your report with the specific invoice number so you know exactly which one to double-check.' },
+      { q: "What currency does CostClerk use?", a: "MYR by default, but the AI detects and reports the currency shown on each invoice. The CSV report is currency-neutral (amounts are numbers without symbols), so it works regardless of the currency." },
+      { q: "Is my data secure?", a: "Only whitelisted email addresses can send invoices to your CostClerk account. Emails from unknown senders are silently discarded and never touch the system. Your invoices are processed and not stored beyond what's needed for reporting." },
+      { q: "What happens if the AI gets something wrong?", a: 'Each parsed invoice includes a confidence score. If any line item has low confidence, it\'s flagged in the "Needs Review" column of your report with the specific invoice number, so you know exactly which one to double-check.' },
       { q: "Can I cancel anytime?", a: "Yes. There's no contract and no cancellation fee. If you stop, your service ends at the end of the billing period." },
       { q: "What if I need more than 20 invoices a day?", a: "Get in touch via the contact form and we'll work out a volume plan that fits your business." },
     ];
@@ -486,9 +537,9 @@
       item.innerHTML = `
         <button class="faq-question" onclick="toggleFaq(${i})">
           <span>${faq.q}</span>
-          <svg class="faq-icon" id="faq-icon-${i}" width="20" height="20" viewBox="0 0 20 20">
-            <line x1="10" y1="4" x2="10" y2="16" stroke="#6B6960" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="4" y1="10" x2="16" y2="10" stroke="#6B6960" stroke-width="1.8" stroke-linecap="round"/>
+          <svg class="faq-icon" id="faq-icon-${i}" width="18" height="18" viewBox="0 0 18 18">
+            <line x1="9" y1="4" x2="9" y2="14" stroke="#9A958C" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="4" y1="9" x2="14" y2="9" stroke="#9A958C" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </button>
         <div class="faq-answer" id="faq-answer-${i}">${faq.a}</div>
@@ -520,17 +571,12 @@
     let currentPage = 'home';
 
     function navigateTo(page) {
-      // Hide all pages
       Object.values(pageMap).forEach(id => document.getElementById(id).classList.add('hidden'));
-      // Show target
       document.getElementById(pageMap[page]).classList.remove('hidden');
-      // Update nav
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.toggle('active', link.dataset.page === page);
       });
-      // Close mobile menu
       document.getElementById('mobile-dropdown').classList.remove('open');
-      // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
       currentPage = page;
     }
@@ -544,10 +590,9 @@
     function submitForm() {
       const name = document.getElementById('field-name').value.trim();
       const email = document.getElementById('field-email').value.trim();
-      if (name && email) {
-        document.getElementById('form-fields').classList.remove('visible');
-        document.getElementById('form-success').classList.add('visible');
-      }
+      if (!name || !email) { alert('Please fill in your name and email.'); return; }
+      document.getElementById('form-fields').classList.remove('visible');
+      document.getElementById('form-success').classList.add('visible');
     }
   </script>
 </body>
