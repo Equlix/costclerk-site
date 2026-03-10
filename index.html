@@ -194,6 +194,33 @@
     .footer-link { display: block; background: none; border: none; color: #6B6960; font-size: 13px; padding: 4px 0; cursor: pointer; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; }
     .footer-link:hover { color: #2A7D6E; }
     .footer-bottom { max-width: 1120px; margin: 0 auto; padding: 16px 32px; border-top: 1px solid #DEE8E5; font-size: 12px; color: #6B6960; }
+
+    /* ===== Checkout Modal ===== */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,20,18,0.55); backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: #FFFFFF; border-radius: 12px; padding: 40px 36px 36px; width: 100%; max-width: 420px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: #9A958C; padding: 4px; border-radius: 4px; }
+    .modal-close:hover { color: #1A1A18; background: #EFF6F4; }
+    .modal-title { font-family: 'Libre Baskerville', Georgia, serif; font-size: 24px; font-weight: 400; color: #1A1A18; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .modal-subtitle { font-size: 14.5px; line-height: 1.65; color: #6B6960; margin-bottom: 28px; }
+    .modal-price { display: inline-flex; align-items: baseline; gap: 2px; background: #EFF6F4; border-radius: 6px; padding: 6px 14px; margin-bottom: 28px; }
+    .modal-price-rm { font-size: 13px; color: #2A7D6E; font-weight: 600; }
+    .modal-price-num { font-family: 'Libre Baskerville', Georgia, serif; font-size: 26px; color: #1A1A18; }
+    .modal-price-period { font-size: 13px; color: #6B6960; }
+    .modal-error { font-size: 13px; color: #C0392B; margin-top: 10px; display: none; }
+    .modal-error.visible { display: block; }
+    .modal-btn-row { margin-top: 16px; }
+    .btn-checkout { width: 100%; background: #1A5248; color: #fff; border: none; border-radius: 6px; padding: 14px 28px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, sans-serif; transition: all 0.2s; letter-spacing: -0.01em; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-checkout:hover:not(:disabled) { background: #143F38; }
+    .btn-checkout:disabled { opacity: 0.65; cursor: not-allowed; }
+    .modal-note { font-size: 12px; color: #9A958C; text-align: center; margin-top: 14px; line-height: 1.6; }
+
+    /* ===== Payment Success Banner ===== */
+    .success-banner { display: none; background: #D5F0EB; border: 1.5px solid #2A7D6E; border-radius: 10px; padding: 24px 28px; margin-bottom: 40px; }
+    .success-banner.visible { display: flex; align-items: flex-start; gap: 16px; }
+    .success-banner-icon { font-size: 22px; flex-shrink: 0; }
+    .success-banner h3 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 18px; font-weight: 400; color: #1A5248; margin-bottom: 4px; }
+    .success-banner p { font-size: 14px; color: #1A5248; margin: 0; line-height: 1.6; opacity: 0.85; }
   </style>
 </head>
 <body>
@@ -229,13 +256,22 @@
 
   <!-- HOME -->
   <div class="page" id="page-home">
+    <!-- Payment success banner -->
+    <div class="success-banner" id="success-banner">
+      <div class="success-banner-icon">✓</div>
+      <div>
+        <h3>You're all set — welcome to CostClerk</h3>
+        <p>Your account is now active. Check your inbox for your dedicated invoice forwarding address and instructions to get started.</p>
+      </div>
+    </div>
+
     <!-- Hero: left-aligned, not centered -->
     <div class="hero">
       <p class="hero-eyebrow">Invoice automation for contractors</p>
       <h1>Forward your invoices.<br>Get a cost breakdown.</h1>
       <p>CostClerk reads your invoices, categorises every line item, and emails you a clean project-by-project cost summary. No app to install, no data entry.</p>
       <div class="hero-buttons">
-        <button class="btn-primary" onclick="navigateTo('contact')">Get Started</button>
+        <button class="btn-primary" onclick="openCheckoutModal()">Get Started</button>
         <button class="btn-secondary" onclick="navigateTo('how')">See How It Works</button>
       </div>
     </div>
@@ -396,7 +432,7 @@
           </div>
         </div>
 
-        <button class="btn-primary" style="width: 100%;" onclick="navigateTo('contact')">Get Started</button>
+        <button class="btn-primary" style="width: 100%;" onclick="openCheckoutModal()">Get Started</button>
       </div>
 
       <div class="pricing-note">
@@ -418,14 +454,14 @@
   <!-- CONTACT -->
   <div class="page hidden" id="page-contact">
     <div class="contact-form">
-      <div class="section-label">Get started</div>
-      <h1 class="page-title">Let's get you set up</h1>
-      <p class="page-subtitle" style="margin-bottom: 40px;">Fill in your details and we'll have your CostClerk account ready within 24 hours. You'll receive your dedicated invoice forwarding address by email.</p>
+      <div class="section-label">Contact</div>
+      <h1 class="page-title">Get in touch</h1>
+      <p class="page-subtitle" style="margin-bottom: 40px;">Questions about CostClerk, volume pricing, or anything else — send us a message and we'll get back to you.</p>
 
       <div class="form-success" id="form-success">
         <div style="font-size: 32px;">✓</div>
-        <h3>We've got your details</h3>
-        <p>We'll be in touch within 24 hours to get you set up.</p>
+        <h3>Message received</h3>
+        <p>We'll get back to you within 24 hours.</p>
       </div>
 
       <div class="form-fields visible" id="form-fields">
@@ -449,7 +485,7 @@
       </div>
 
       <div class="contact-email-note">
-        <strong>Prefer email?</strong> Reach us directly at <span class="email-link"><a href="mailto:hello@costclerk.com" class="email-link">hello@costclerk.com</a></span>
+        <strong>Prefer email?</strong> Reach us directly at <span class="email-link"><a href="/cdn-cgi/l/email-protection#7a121f1616153a1915090e19161f081154191517"><span class="__cf_email__" data-cfemail="82eae7eeeeedc2e1edf1f6e1eee7f0e9ace1edef">[email&#160;protected]</span></a></span>
       </div>
     </div>
   </div>
@@ -485,8 +521,42 @@
       <p>CostClerk is built and operated in Malaysia, for Malaysian contractors. If you have questions, feedback, or just want to talk about how your business handles invoices, we'd love to hear from you.</p>
 
       <div class="about-email">
-        <strong>Get in touch:</strong> <span class="email-link"><a href="mailto:hello@costclerk.com" class="email-link">hello@costclerk.com</a></span>
+        <strong>Get in touch:</strong> <span class="email-link"><a href="/cdn-cgi/l/email-protection#f098959c9c9fb0939f8384939c95829bde939f9d"><span class="__cf_email__" data-cfemail="254d4049494a65464a5651464940574e0b464a48">[email&#160;protected]</span></a></span>
       </div>
+    </div>
+  </div>
+
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-overlay" id="checkout-modal" onclick="handleModalOverlayClick(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCheckoutModal()" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <h2 class="modal-title">Start your subscription</h2>
+      <p class="modal-subtitle">Enter your email address — you'll be taken to a secure payment page. Once payment is confirmed, your account is activated automatically.</p>
+      <div class="modal-price">
+        <span class="modal-price-rm">RM</span>
+        <span class="modal-price-num">49</span>
+        <span class="modal-price-period">&nbsp;/ month &nbsp;·&nbsp; cancel anytime</span>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-input" id="modal-email" placeholder="you@company.com" onkeydown="handleModalKeydown(event)" />
+        <div class="modal-error" id="modal-error"></div>
+      </div>
+      <div class="modal-btn-row">
+        <button class="btn-checkout" id="checkout-btn" onclick="startCheckout()">
+          <span id="checkout-btn-text">Continue to payment</span>
+          <svg id="checkout-spinner" style="display:none;" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+            <path d="M9 2a7 7 0 0 1 7 7" stroke="white" stroke-width="2" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="0 9 9" to="360 9 9" dur="0.7s" repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </button>
+      </div>
+      <p class="modal-note">Secured by Stripe</p>
     </div>
   </div>
 
@@ -586,7 +656,7 @@
       document.getElementById('mobile-dropdown').classList.toggle('open');
     }
 
-    // Contact form
+    // Contact form (general inquiries)
     function submitForm() {
       const name = document.getElementById('field-name').value.trim();
       const email = document.getElementById('field-email').value.trim();
@@ -594,6 +664,100 @@
       document.getElementById('form-fields').classList.remove('visible');
       document.getElementById('form-success').classList.add('visible');
     }
+
+    // ---
+    const BACKEND_URL = 'http://129.212.226.123:8080';
+
+    function openCheckoutModal() {
+      document.getElementById('checkout-modal').classList.add('open');
+      document.getElementById('modal-email').value = '';
+      document.getElementById('modal-error').classList.remove('visible');
+      document.getElementById('modal-error').textContent = '';
+      resetCheckoutBtn();
+      setTimeout(() => document.getElementById('modal-email').focus(), 100);
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.remove('open');
+    }
+
+    function handleModalOverlayClick(e) {
+      if (e.target === document.getElementById('checkout-modal')) closeCheckoutModal();
+    }
+
+    function handleModalKeydown(e) {
+      if (e.key === 'Enter') startCheckout();
+      if (e.key === 'Escape') closeCheckoutModal();
+    }
+
+    function resetCheckoutBtn() {
+      const btn = document.getElementById('checkout-btn');
+      const txt = document.getElementById('checkout-btn-text');
+      const spinner = document.getElementById('checkout-spinner');
+      btn.disabled = false;
+      txt.textContent = 'Continue to payment';
+      spinner.style.display = 'none';
+    }
+
+    function setCheckoutLoading(loading) {
+      const btn = document.getElementById('checkout-btn');
+      const txt = document.getElementById('checkout-btn-text');
+      const spinner = document.getElementById('checkout-spinner');
+      btn.disabled = loading;
+      txt.textContent = loading ? 'Redirecting...' : 'Continue to payment';
+      spinner.style.display = loading ? 'inline' : 'none';
+    }
+
+    function showModalError(msg) {
+      const err = document.getElementById('modal-error');
+      err.textContent = msg;
+      err.classList.add('visible');
+    }
+
+    async function startCheckout() {
+      const email = document.getElementById('modal-email').value.trim();
+      document.getElementById('modal-error').classList.remove('visible');
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showModalError('Please enter a valid email address.');
+        return;
+      }
+
+      setCheckoutLoading(true);
+
+      try {
+        const res = await fetch(`${BACKEND_URL}/create-checkout-session`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || !data.url) {
+          showModalError(data.error || 'Something went wrong. Please try again.');
+          setCheckoutLoading(false);
+          return;
+        }
+
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+
+      } catch (err) {
+        showModalError('Could not connect. Please check your connection and try again.');
+        setCheckoutLoading(false);
+      }
+    }
+
+    // --- Handle return from Stripe ---
+    (function checkStripeReturn() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('success') === 'true') {
+        document.getElementById('success-banner').classList.add('visible');
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    })();
+
   </script>
 </body>
 </html>
