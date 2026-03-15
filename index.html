@@ -386,7 +386,7 @@
     <div class="pricing-center">
       <div class="section-label">Pricing</div>
       <h1 class="page-title">One plan. Flat rate.</h1>
-      <p class="page-subtitle" style="margin-bottom: 48px;">No tiers, no per-invoice fees, no surprises.</p>
+      <p class="page-subtitle" style="margin-bottom: 48px;">No tiers, no per-invoice fees.</p>
 
       <div class="pricing-card">
         <div class="pricing-label">Everything included</div>
@@ -456,12 +456,12 @@
     <div class="contact-form">
       <div class="section-label">Contact</div>
       <h1 class="page-title">Get in touch</h1>
-      <p class="page-subtitle" style="margin-bottom: 40px;">Questions about CostClerk, volume pricing, or anything else — send us a message and we'll get back to you.</p>
+      <p class="page-subtitle" style="margin-bottom: 40px;">Have a question? We'll get back to you.</p>
 
       <div class="form-success" id="form-success">
         <div style="font-size: 32px;">✓</div>
         <h3>Message received</h3>
-        <p>We'll get back to you within 24 hours.</p>
+        <p>We'll get back to you.</p>
       </div>
 
       <div class="form-fields visible" id="form-fields">
@@ -478,9 +478,11 @@
           <input type="text" class="form-input" id="field-company" placeholder="Your company" />
         </div>
         <div class="form-group">
-          <label class="form-label">Anything we should know?</label>
-          <textarea class="form-input form-textarea" id="field-message" placeholder="Approximate monthly invoice volume, specific needs, etc."></textarea>
+          <label class="form-label">Message</label>
+          <textarea class="form-input form-textarea" id="field-message" placeholder="How can we help?" maxlength="2000"></textarea>
+          <div style="text-align: right; font-size: 12px; color: #B4B2A9; margin-top: 4px;" id="char-count">0 / 2,000</div>
         </div>
+        <input type="text" id="field-phone" style="position:absolute;left:-9999px;top:-9999px;" tabindex="-1" autocomplete="off" />
         <button class="btn-primary" style="width: 100%;" onclick="submitForm()">Submit</button>
       </div>
 
@@ -656,13 +658,41 @@
       document.getElementById('mobile-dropdown').classList.toggle('open');
     }
 
+    // Character counter for message field
+    document.getElementById('field-message').addEventListener('input', function() {
+      const len = this.value.length;
+      const counter = document.getElementById('char-count');
+      counter.textContent = len.toLocaleString() + ' / 2,000';
+      counter.style.color = len >= 2000 ? '#E24B4A' : '#B4B2A9';
+    });
+
     // Contact form (general inquiries)
-    function submitForm() {
+    async function submitForm() {
       const name = document.getElementById('field-name').value.trim();
       const email = document.getElementById('field-email').value.trim();
+      const company = document.getElementById('field-company').value.trim();
+      const message = document.getElementById('field-message').value.trim();
+      const phone = document.getElementById('field-phone').value;
       if (!name || !email) { alert('Please fill in your name and email.'); return; }
-      document.getElementById('form-fields').classList.remove('visible');
-      document.getElementById('form-success').classList.add('visible');
+
+      const btn = document.querySelector('#form-fields .btn-primary');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(`${BACKEND_URL}/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, company, message, phone }),
+        });
+        if (!res.ok) throw new Error();
+        document.getElementById('form-fields').classList.remove('visible');
+        document.getElementById('form-success').classList.add('visible');
+      } catch (e) {
+        alert('Something went wrong. Please try again or email hello@costclerk.com directly.');
+        btn.disabled = false;
+        btn.textContent = 'Submit';
+      }
     }
 
     // ---
