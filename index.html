@@ -184,6 +184,19 @@
     .about-email strong { color: #1A1A18; }
     .about-email .email-link { color: #2A7D6E; font-weight: 500; }
 
+    /* Legal pages (Privacy, Terms) */
+    .legal-content { max-width: 640px; margin: 0 auto; }
+    .legal-meta { font-size: 14px; color: #6B6960; line-height: 1.8; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #E8F0EE; }
+    .legal-content h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 20px; font-weight: 400; color: #1A1A18; margin: 36px 0 12px; }
+    .legal-content p { font-size: 15px; line-height: 1.8; color: #6B6960; margin-bottom: 1em; }
+    .legal-content strong { color: #1A1A18; }
+    .legal-content a { color: #2A7D6E; }
+    .legal-content a:hover { text-decoration: underline; }
+    .legal-provider { margin-bottom: 16px; padding-left: 16px; border-left: 2px solid #DEE8E5; }
+    .legal-provider strong { display: block; margin-bottom: 2px; font-size: 15px; }
+    .legal-provider p { margin-bottom: 0; }
+    .legal-effective { font-size: 13px; color: #9A958C; margin-top: 40px; padding-top: 24px; border-top: 1px solid #E8F0EE; font-style: italic; }
+
     /* Footer */
     .footer { border-top: 1px solid #DEE8E5; background: #F4F8F6; }
     .footer-inner { max-width: 1120px; margin: 0 auto; padding: 48px 32px 32px; display: flex; flex-wrap: wrap; gap: 40px 64px; justify-content: space-between; }
@@ -529,6 +542,191 @@
   </div>
 
 
+  <!-- PRIVACY POLICY -->
+  <div class="page hidden" id="page-privacy">
+    <div class="legal-content">
+      <div class="section-label">Privacy Policy</div>
+      <h1 class="page-title" style="margin-bottom: 8px;">Privacy Policy</h1>
+      <div class="legal-meta">
+        <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
+        Version 1.0
+      </div>
+
+      <h2>What is CostClerk?</h2>
+      <p>CostClerk is a subscription-based invoice automation service for contractors in Malaysia. You forward PDF invoices to our email address, and we send back per-project cost breakdowns as CSV reports. The entire service runs over email — there is no app, dashboard, or login.</p>
+      <p>This policy explains what data we collect, why we collect it, how we use it, who we share it with, and how you can request deletion. It is written in compliance with Malaysian data protection law.</p>
+      <p>By forwarding invoices and subscribing to CostClerk, you consent to the collection, processing, and cross-border transfer of your data as described in this policy.</p>
+
+      <h2>What data do we collect?</h2>
+      <p><strong>From you directly:</strong> Your email address, which is used solely to identify your account, receive your invoices, and send your reports. It is not used for marketing, profiling, or any other purpose.</p>
+      <p><strong>From the invoices you forward to us:</strong> The PDF invoices you send may contain supplier names, pricing and cost details, project names or descriptions, site or delivery addresses, SSM registration numbers, and client names. We process this information solely to generate your cost breakdown reports.</p>
+
+      <h2>Why do we collect it?</h2>
+      <p>We collect and process your data for the following purposes only:</p>
+      <p>To operate CostClerk — receiving your invoices, parsing them, generating reports, and emailing them back to you.</p>
+      <p>To manage your account — maintaining your email on our whitelist so CostClerk recognises your invoices.</p>
+      <p>To identify common formatting patterns that help us improve parsing accuracy.</p>
+      <p>We do not use your data for marketing, advertising, or profiling. We do not sell or rent your data to anyone.</p>
+
+      <h2>Who do we share it with?</h2>
+      <p>To operate CostClerk, we use the following third-party services. Your data is shared with them only to the extent necessary to operate CostClerk:</p>
+
+      <div class="legal-provider">
+        <strong>Anthropic (United States)</strong>
+        <p>We use the Anthropic Claude API to parse the content of your invoices. Invoice text and images are sent to Anthropic's servers for processing. CostClerk uses the Anthropic API under commercial terms. Data sent to the API is not used by Anthropic to train their AI models. Anthropic's data handling practices are described in their privacy policy at <a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a>.</p>
+      </div>
+
+      <div class="legal-provider">
+        <strong>Stripe (United States)</strong>
+        <p>We use Stripe to process subscription payments. Stripe processes your email address and payment card details. CostClerk does not store your card information. Stripe's privacy policy is available at <a href="https://stripe.com/privacy" target="_blank">stripe.com/privacy</a>.</p>
+      </div>
+
+      <div class="legal-provider">
+        <strong>Resend (United States)</strong>
+        <p>We use Resend to deliver report emails to you. Resend processes your email address and the email content (including attached reports) for delivery.</p>
+      </div>
+
+      <div class="legal-provider">
+        <strong>Google Workspace (Global)</strong>
+        <p>Our incoming email (where you forward invoices) is hosted on Google Workspace. Google processes incoming emails in accordance with their privacy policy at <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>.</p>
+      </div>
+
+      <div class="legal-provider">
+        <strong>DigitalOcean (Singapore)</strong>
+        <p>Our servers and database are hosted on DigitalOcean's Singapore datacenter. DigitalOcean stores and processes the data on our servers as our infrastructure provider.</p>
+      </div>
+
+      <p>These are the only third-party services that handle your data.</p>
+
+      <h2>Cross-border data transfers</h2>
+      <p>Some of the third-party services listed above are based outside Malaysia. This means your data may be transferred to and processed in countries outside Malaysia, including the United States and Singapore. These transfers are necessary to provide the CostClerk service to you.</p>
+      <p>By using CostClerk, you consent to these transfers. All data is transmitted over encrypted connections (HTTPS/TLS) to and from these services. We select service providers that maintain reasonable security standards for the protection of your data.</p>
+
+      <h2>How long do we keep your data?</h2>
+      <p>We do not retain invoice data indefinitely. Processed invoice data and reports are periodically deleted from our systems.</p>
+      <p>Your email address is retained for as long as your subscription is active. If you cancel your subscription, your email is removed from our active systems when your subscription ends. It may remain in backups for up to 30 days.</p>
+
+      <h2>How do we protect your data?</h2>
+      <p>We take reasonable steps to protect your data from unauthorised access, loss, misuse, or disclosure. These measures include:</p>
+      <p>Encrypted connections (HTTPS/TLS) for all data in transit.</p>
+      <p>Access to our servers is restricted and protected by SSH authentication.</p>
+      <p>Database access is limited to the CostClerk application only.</p>
+      <p>No CostClerk staff other than the sole operator have access to your data.</p>
+      <p>Our servers generate operational logs that may contain your email address. These are used for troubleshooting and are not shared with third parties.</p>
+
+      <h2>Cookies and analytics</h2>
+      <p>costclerk.com does not use cookies or tracking analytics.</p>
+
+      <h2>Your rights under Malaysian data protection law</h2>
+      <p>Under Malaysian data protection law, you have the right to:</p>
+      <p><strong>Access</strong> — Request a copy of the personal data we hold about you.</p>
+      <p><strong>Correction</strong> — Request that we correct any inaccurate or incomplete data.</p>
+      <p><strong>Withdrawal of consent</strong> — Withdraw your consent for us to process your data at any time. This will result in termination of your CostClerk subscription, as we cannot operate the service without processing invoice data.</p>
+      <p><strong>Deletion</strong> — Request that we delete all your personal data from our systems.</p>
+      <p>To exercise any of these rights, email us at <a href="mailto:hello@costclerk.com">hello@costclerk.com</a>. We will respond within 21 days.</p>
+
+      <h2>Your responsibility for third-party data</h2>
+      <p>The invoices you forward to CostClerk may contain personal data belonging to other individuals — such as your clients, suppliers, or subcontractors (for example, their names, business addresses, or SSM numbers).</p>
+      <p>By forwarding these invoices, you confirm that you have the right to share this information with CostClerk for the purpose of generating your cost reports.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this privacy policy from time to time. If we make significant changes, we will notify you by email. The latest version will always be available at costclerk.com/privacy.</p>
+
+      <h2>Contact us</h2>
+      <p>If you have any questions about this privacy policy or how we handle your data:</p>
+      <p><strong>CostClerk Services</strong> (SSM: 202603072114)<br><strong>Email:</strong> <a href="mailto:hello@costclerk.com">hello@costclerk.com</a><br><strong>Address:</strong> Selangor, Malaysia</p>
+
+      <p class="legal-effective">This privacy policy (v1.0) is effective as of 17 March 2026.</p>
+    </div>
+  </div>
+
+
+  <!-- TERMS AND CONDITIONS -->
+  <div class="page hidden" id="page-terms">
+    <div class="legal-content">
+      <div class="section-label">Terms and Conditions</div>
+      <h1 class="page-title" style="margin-bottom: 8px;">Terms and Conditions</h1>
+      <div class="legal-meta">
+        <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
+        Version 1.0
+      </div>
+
+      <h2>What this document covers</h2>
+      <p>These terms and conditions govern your use of CostClerk. By subscribing to CostClerk or forwarding invoices to our processing email address, you agree to these terms.</p>
+      <p>If you do not agree with any part of these terms, do not use CostClerk.</p>
+
+      <h2>What CostClerk does</h2>
+      <p>CostClerk is a subscription-based invoice automation service. You forward PDF invoices to a dedicated email address, and CostClerk parses them and returns per-project cost breakdowns as CSV reports via email.</p>
+      <p>CostClerk is a tool to assist with cost tracking. It does not provide accounting, tax, financial, or legal advice.</p>
+      <p>We may modify, improve, or discontinue features of CostClerk from time to time in order to maintain or improve the service.</p>
+
+      <h2>Subscriptions and payment</h2>
+      <p>CostClerk is offered as a monthly subscription at RM49/month. Payment is by credit or debit card via Stripe.</p>
+      <p>Each subscription includes processing of up to 20 invoices per day. Invoices beyond this limit will not be processed until the following day.</p>
+      <p>Your subscription renews automatically each month unless you cancel. To cancel, email <a href="mailto:hello@costclerk.com">hello@costclerk.com</a>. Cancellation takes effect at the end of your current billing period — you will continue to have access until then.</p>
+      <p>We reserve the right to change pricing with 30 days' written notice by email. Continued use after a price change constitutes acceptance of the new price.</p>
+      <p>Subscription fees are non-refundable. No partial refunds are given for unused portions of a billing period. Refunds may be issued at our sole discretion in exceptional circumstances.</p>
+
+      <h2>Accuracy of reports</h2>
+      <p>CostClerk uses AI-powered document parsing to extract data from your invoices. While we strive for accuracy, we cannot guarantee that every invoice will be parsed correctly.</p>
+      <p><strong>You are responsible for reviewing all reports generated by CostClerk before relying on them for any business, financial, or tax decisions.</strong></p>
+      <p>CostClerk is not a substitute for professional accounting. Reports are provided on an "as-is" basis. We do not accept liability for errors, omissions, or misinterpretations in parsed invoice data.</p>
+
+      <h2>Your responsibilities</h2>
+      <p>By using CostClerk, you agree that:</p>
+      <p>Your CostClerk account is identified by the email address used to submit invoices. You are responsible for maintaining control of that email account.</p>
+      <p>You will only forward invoices that you are authorised to share. If your invoices contain personal data belonging to third parties (such as clients, suppliers, or subcontractors), you are responsible for having the right to share that data with CostClerk.</p>
+      <p>You will not use CostClerk for any unlawful purpose, including but not limited to submitting fraudulent, forged, or stolen documents.</p>
+      <p>You will not attempt to overload, disrupt, or interfere with CostClerk's systems or infrastructure.</p>
+      <p>You will provide a valid email address and keep your contact information up to date.</p>
+
+      <h2>Availability and uptime</h2>
+      <p>We aim to keep CostClerk running reliably, but we do not guarantee 100% uptime. CostClerk may be temporarily unavailable due to maintenance, updates, infrastructure issues, or circumstances beyond our control.</p>
+      <p>We will make reasonable efforts to notify you of planned downtime in advance via email. Advance notice may not always be possible for unplanned outages.</p>
+
+      <h2>Data handling</h2>
+      <p>Your data is handled in accordance with our <a href="javascript:void(0)" onclick="navigateTo('privacy')">Privacy Policy</a>. By using CostClerk, you also agree to the terms of that policy.</p>
+
+      <h2>Intellectual property</h2>
+      <p>CostClerk, including its name, website, and systems, is the property of the operator. You may not copy, reproduce, distribute, modify, or reverse-engineer any part of CostClerk except as permitted by law.</p>
+      <p>The invoices you submit and the reports generated from them remain your property. We claim no ownership over your data.</p>
+
+      <h2>Limitation of liability</h2>
+      <p>To the maximum extent permitted by Malaysian law:</p>
+      <p>CostClerk is provided on an "as is" and "as available" basis, without warranties of any kind, whether express or implied, including but not limited to accuracy, fitness for a particular purpose, or uninterrupted availability.</p>
+      <p>To the fullest extent permitted by law, the total aggregate liability of CostClerk arising out of or in connection with your use of the service, whether in contract, tort (including negligence), or otherwise, shall not exceed the total amount you have paid to CostClerk in the three (3) months immediately preceding the event giving rise to the claim.</p>
+      <p>CostClerk shall not be liable for any indirect, incidental, consequential, special, or punitive damages, including but not limited to loss of profits, loss of data, or business interruption, even if advised of the possibility of such damages.</p>
+      <p>CostClerk is not responsible for the content, accuracy, or legality of any data, documents, or third-party materials submitted to or processed by the service.</p>
+      <p>Nothing in these terms excludes or limits our liability for death or personal injury caused by our negligence, or for fraud or fraudulent misrepresentation.</p>
+
+      <h2>Dispute resolution</h2>
+      <p>Both parties agree to first attempt to resolve any dispute informally by contacting the other party via email. If the dispute is not resolved within 30 days of first contact, either party may proceed with formal legal action.</p>
+
+      <h2>Termination</h2>
+      <p>We may suspend or terminate your access to CostClerk at any time, with or without notice, including but not limited to the following circumstances:</p>
+      <p>You breach any of these terms.</p>
+      <p>You use CostClerk in a way that could harm the service, other users, or our infrastructure.</p>
+      <p>Your subscription expires or is not renewed. Without an active subscription, your email is removed from the whitelist and invoices will no longer be processed.</p>
+      <p>Upon termination, your data is handled in accordance with our <a href="javascript:void(0)" onclick="navigateTo('privacy')">Privacy Policy</a>. We are not obligated to provide continued access to your data after termination.</p>
+      <p>You may cancel your subscription at any time by contacting us at <a href="mailto:hello@costclerk.com">hello@costclerk.com</a>. We will process cancellation requests within a reasonable timeframe. Cancellation takes effect at the end of your current billing period.</p>
+      <p>Any provisions of these terms which by their nature should survive termination shall continue to apply, including but not limited to limitation of liability and disclaimers.</p>
+
+      <h2>Changes to these terms</h2>
+      <p>We may update these terms from time to time. If we make significant changes, we will notify you by email at least 14 days before the changes take effect. The latest version will always be available at costclerk.com/terms.</p>
+      <p>Continued use of CostClerk after changes take effect constitutes acceptance of the updated terms.</p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of Malaysia. Any disputes arising from these terms or your use of CostClerk shall be subject to the jurisdiction of the Malaysian courts.</p>
+
+      <h2>Contact us</h2>
+      <p>If you have any questions about these terms:</p>
+      <p><strong>CostClerk Services</strong> (SSM: 202603072114)<br><strong>Email:</strong> <a href="mailto:hello@costclerk.com">hello@costclerk.com</a><br><strong>Address:</strong> Selangor, Malaysia</p>
+
+      <p class="legal-effective">These terms and conditions (v1.0) are effective as of 17 March 2026.</p>
+    </div>
+  </div>
+
+
   <!-- CHECKOUT MODAL -->
   <div class="modal-overlay" id="checkout-modal" onclick="handleModalOverlayClick(event)">
     <div class="modal-box">
@@ -558,6 +756,7 @@
           </svg>
         </button>
       </div>
+      <p class="modal-note">By subscribing, you agree to our <a href="javascript:void(0)" onclick="closeCheckoutModal();navigateTo('terms')" style="color:#2A7D6E;">Terms</a> and <a href="javascript:void(0)" onclick="closeCheckoutModal();navigateTo('privacy')" style="color:#2A7D6E;">Privacy Policy</a>.</p>
       <p class="modal-note">Secured by Stripe</p>
     </div>
   </div>
@@ -580,6 +779,11 @@
           <div class="footer-col-title">Company</div>
           <button class="footer-link" onclick="navigateTo('about')">About</button>
           <button class="footer-link" onclick="navigateTo('contact')">Contact</button>
+        </div>
+        <div>
+          <div class="footer-col-title">Legal</div>
+          <button class="footer-link" onclick="navigateTo('privacy')">Privacy Policy</button>
+          <button class="footer-link" onclick="navigateTo('terms')">Terms</button>
         </div>
       </div>
     </div>
@@ -639,7 +843,7 @@
     }
 
     // Navigation
-    const pageMap = { home: 'page-home', how: 'page-how', pricing: 'page-pricing', faq: 'page-faq', contact: 'page-contact', about: 'page-about' };
+    const pageMap = { home: 'page-home', how: 'page-how', pricing: 'page-pricing', faq: 'page-faq', contact: 'page-contact', about: 'page-about', privacy: 'page-privacy', terms: 'page-terms' };
     let currentPage = 'home';
 
     function navigateTo(page) {
@@ -779,15 +983,11 @@
       }
     }
 
-    // --- Handle return from Stripe ---
-    (function checkStripeReturn() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('success') === 'true') {
-        document.getElementById('success-banner').classList.add('visible');
-        window.history.replaceState({}, '', window.location.pathname);
-      }
-    })();
-
+    // Show success banner after Stripe redirect
+    if (new URLSearchParams(window.location.search).get('success') === 'true') {
+      document.getElementById('success-banner').classList.add('visible');
+      window.history.replaceState({}, '', window.location.pathname);
+    }
   </script>
 </body>
 </html>
