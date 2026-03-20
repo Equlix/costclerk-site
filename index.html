@@ -554,7 +554,7 @@
     <div class="legal-content">
       <div class="section-label">Privacy Policy</div>
       <h1 class="page-title" style="margin-bottom: 8px;" id="privacy-title">Privacy Policy</h1>
-      <div class="legal-meta">
+      <div class="legal-meta" id="privacy-meta">
         <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
         Version 1.0
         <div class="legal-lang-toggle">
@@ -750,7 +750,7 @@
     <div class="legal-content">
       <div class="section-label">Terms and Conditions</div>
       <h1 class="page-title" style="margin-bottom: 8px;" id="terms-title">Terms and Conditions</h1>
-      <div class="legal-meta">
+      <div class="legal-meta" id="terms-meta">
         <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
         Version 1.0
         <div class="legal-lang-toggle">
@@ -1182,6 +1182,12 @@
       } else if (page === 'terms') {
         document.getElementById('terms-title').textContent = lang === 'bm' ? 'Terma dan Syarat' : 'Terms and Conditions';
       }
+      const metaEl = document.getElementById(page + '-meta');
+      const toggle = metaEl.querySelector('.legal-lang-toggle');
+      metaEl.innerHTML = lang === 'bm'
+        ? '<strong>CostClerk</strong> · Kemaskini terakhir: 17 Mac 2026<br>Versi 1.0'
+        : '<strong>CostClerk</strong> · Last updated: 17 March 2026<br>Version 1.0';
+      metaEl.appendChild(toggle);
     }
 
     // Show success banner after Stripe redirect
