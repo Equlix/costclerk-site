@@ -197,6 +197,13 @@
     .legal-provider p { margin-bottom: 0; }
     .legal-effective { font-size: 13px; color: #9A958C; margin-top: 40px; padding-top: 24px; border-top: 1px solid #E8F0EE; font-style: italic; }
 
+    /* Language toggle */
+    .legal-lang-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+    .legal-lang-toggle span { font-size: 14px; color: #9A958C; cursor: pointer; transition: color 0.2s; }
+    .legal-lang-toggle span.active-lang { color: #1A1A18; font-weight: 600; }
+    .legal-lang-toggle .lang-divider { color: #DEE8E5; cursor: default; }
+    .legal-lang-hidden { display: none; }
+
     /* Footer */
     .footer { border-top: 1px solid #DEE8E5; background: #F4F8F6; }
     .footer-inner { max-width: 1120px; margin: 0 auto; padding: 48px 32px 32px; display: flex; flex-wrap: wrap; gap: 40px 64px; justify-content: space-between; }
@@ -546,12 +553,19 @@
   <div class="page hidden" id="page-privacy">
     <div class="legal-content">
       <div class="section-label">Privacy Policy</div>
-      <h1 class="page-title" style="margin-bottom: 8px;">Privacy Policy</h1>
+      <h1 class="page-title" style="margin-bottom: 8px;" id="privacy-title">Privacy Policy</h1>
       <div class="legal-meta">
         <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
         Version 1.0
       </div>
 
+      <div class="legal-lang-toggle">
+        <span id="privacy-lang-en" class="active-lang" onclick="toggleLegalLang('privacy','en')">English</span>
+        <span class="lang-divider">|</span>
+        <span id="privacy-lang-bm" onclick="toggleLegalLang('privacy','bm')">Bahasa Malaysia</span>
+      </div>
+
+      <div id="privacy-en">
       <h2>What is CostClerk?</h2>
       <p>CostClerk is a subscription-based invoice automation service for contractors in Malaysia. You forward PDF invoices to our email address, and we send back per-project cost breakdowns as CSV reports. The entire service runs over email — there is no app, dashboard, or login.</p>
       <p>This policy explains what data we collect, why we collect it, how we use it, who we share it with, and how you can request deletion. It is written in compliance with Malaysian data protection law.</p>
@@ -637,6 +651,97 @@
       <p><strong>CostClerk Services</strong> (SSM: 202603072114)<br><strong>Email:</strong> <a href="mailto:hello@costclerk.com">hello@costclerk.com</a><br><strong>Address:</strong> Selangor, Malaysia</p>
 
       <p class="legal-effective">This privacy policy (v1.0) is effective as of 17 March 2026.</p>
+      </div>
+
+      <div id="privacy-bm" class="legal-lang-hidden">
+        <p style="font-size: 13px; color: #9A958C; font-style: italic; margin-bottom: 24px;">Sekiranya terdapat percanggahan antara versi Bahasa Inggeris dan Bahasa Melayu bagi dasar ini, versi Bahasa Inggeris akan digunapakai.</p>
+
+        <h2>Apa itu CostClerk?</h2>
+        <p>CostClerk ialah perkhidmatan automasi invois berasaskan langganan untuk kontraktor di Malaysia. Anda hanya perlu memajukan invois PDF ke alamat e-mel kami, dan kami akan menghantar semula pecahan kos mengikut projek dalam bentuk laporan CSV. Keseluruhan perkhidmatan ini berjalan melalui e-mel — tiada aplikasi, papan pemuka, atau log masuk.</p>
+        <p>Dasar ini menerangkan data apa yang kami kumpul, mengapa kami kumpulkannya, bagaimana kami menggunakannya, dengan siapa kami kongsikannya, dan bagaimana anda boleh meminta pemadaman data. Ia ditulis mengikut undang-undang perlindungan data peribadi Malaysia.</p>
+        <p>Dengan memajukan invois dan melanggan CostClerk, anda bersetuju dengan pengumpulan, pemprosesan, dan pemindahan rentas sempadan data anda seperti yang dinyatakan dalam dasar ini.</p>
+
+        <h2>Data apa yang kami kumpul?</h2>
+        <p><strong>Daripada anda secara langsung:</strong> Alamat e-mel anda, yang digunakan semata-mata untuk mengenal pasti akaun anda, menerima invois anda, dan menghantar laporan anda. Ia tidak digunakan untuk pemasaran, pemprofilan, atau sebarang tujuan lain.</p>
+        <p><strong>Daripada invois yang anda majukan kepada kami:</strong> Invois PDF yang anda hantar mungkin mengandungi nama pembekal, butiran harga dan kos, nama atau keterangan projek, alamat tapak atau penghantaran, nombor pendaftaran SSM, dan nama pelanggan. Kami memproses maklumat ini semata-mata untuk menjana laporan pecahan kos anda.</p>
+
+        <h2>Mengapa kami mengumpulnya?</h2>
+        <p>Kami mengumpul dan memproses data anda untuk tujuan berikut sahaja:</p>
+        <p>Untuk mengendalikan CostClerk — menerima invois anda, membacanya, menjana laporan, dan menghantar semula laporan melalui e-mel kepada anda.</p>
+        <p>Untuk mengurus akaun anda — mengekalkan e-mel anda dalam senarai putih supaya CostClerk mengenali invois anda.</p>
+        <p>Untuk mengenal pasti corak format yang biasa bagi membantu kami meningkatkan ketepatan pembacaan invois.</p>
+        <p>Kami tidak menggunakan data anda untuk pemasaran, pengiklanan, atau pemprofilan. Kami tidak menjual atau menyewakan data anda kepada sesiapa.</p>
+
+        <h2>Dengan siapa kami kongsikan data anda?</h2>
+        <p>Untuk mengendalikan CostClerk, kami menggunakan perkhidmatan pihak ketiga berikut. Data anda dikongsi dengan mereka hanya setakat yang diperlukan untuk mengendalikan CostClerk:</p>
+
+        <div class="legal-provider">
+          <strong>Anthropic (Amerika Syarikat)</strong>
+          <p>Kami menggunakan API Anthropic Claude untuk membaca kandungan invois anda. Teks dan imej invois dihantar ke pelayan Anthropic untuk diproses. CostClerk menggunakan API Anthropic di bawah terma komersial. Data yang dihantar ke API tidak digunakan oleh Anthropic untuk melatih model AI mereka. Amalan pengendalian data Anthropic diterangkan dalam dasar privasi mereka di <a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a>.</p>
+        </div>
+
+        <div class="legal-provider">
+          <strong>Stripe (Amerika Syarikat)</strong>
+          <p>Kami menggunakan Stripe untuk memproses pembayaran langganan. Stripe memproses alamat e-mel dan butiran kad pembayaran anda. CostClerk tidak menyimpan maklumat kad anda. Dasar privasi Stripe boleh didapati di <a href="https://stripe.com/privacy" target="_blank">stripe.com/privacy</a>.</p>
+        </div>
+
+        <div class="legal-provider">
+          <strong>Resend (Amerika Syarikat)</strong>
+          <p>Kami menggunakan Resend untuk menghantar e-mel laporan kepada anda. Resend memproses alamat e-mel anda dan kandungan e-mel (termasuk lampiran laporan) untuk tujuan penghantaran.</p>
+        </div>
+
+        <div class="legal-provider">
+          <strong>Google Workspace (Global)</strong>
+          <p>E-mel masuk kami (di mana anda memajukan invois) dihoskan di Google Workspace. Google memproses e-mel masuk mengikut dasar privasi mereka di <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>.</p>
+        </div>
+
+        <div class="legal-provider">
+          <strong>DigitalOcean (Singapura)</strong>
+          <p>Pelayan dan pangkalan data kami dihoskan di pusat data DigitalOcean di Singapura. DigitalOcean menyimpan dan memproses data di pelayan kami sebagai penyedia infrastruktur kami.</p>
+        </div>
+
+        <p>Ini sahaja perkhidmatan pihak ketiga yang mengendalikan data anda.</p>
+
+        <h2>Pemindahan data rentas sempadan</h2>
+        <p>Sebahagian daripada perkhidmatan pihak ketiga yang disenaraikan di atas berpangkalan di luar Malaysia. Ini bermakna data anda mungkin dipindahkan ke dan diproses di negara di luar Malaysia, termasuk Amerika Syarikat dan Singapura. Pemindahan ini perlu untuk menyediakan perkhidmatan CostClerk kepada anda.</p>
+        <p>Dengan menggunakan CostClerk, anda bersetuju dengan pemindahan ini. Semua data dihantar melalui sambungan yang disulitkan (HTTPS/TLS) ke dan dari perkhidmatan ini. Kami memilih penyedia perkhidmatan yang mengekalkan standard keselamatan yang munasabah untuk melindungi data anda.</p>
+
+        <h2>Berapa lama kami menyimpan data anda?</h2>
+        <p>Kami tidak menyimpan data invois selama-lamanya. Data invois yang telah diproses dan laporan dipadamkan secara berkala daripada sistem kami.</p>
+        <p>Alamat e-mel anda disimpan selagi langganan anda aktif. Jika anda membatalkan langganan, e-mel anda dikeluarkan daripada sistem aktif kami apabila langganan anda tamat. Ia mungkin kekal dalam salinan sandaran sehingga 30 hari.</p>
+
+        <h2>Bagaimana kami melindungi data anda?</h2>
+        <p>Kami mengambil langkah yang munasabah untuk melindungi data anda daripada capaian tanpa kebenaran, kehilangan, penyalahgunaan, atau pendedahan. Langkah-langkah ini termasuk:</p>
+        <p>Sambungan yang disulitkan (HTTPS/TLS) untuk semua data semasa pemindahan.</p>
+        <p>Capaian ke pelayan kami dihadkan dan dilindungi oleh pengesahan SSH.</p>
+        <p>Capaian pangkalan data dihadkan kepada aplikasi CostClerk sahaja.</p>
+        <p>Tiada kakitangan CostClerk selain pengendali tunggal yang mempunyai capaian kepada data anda.</p>
+        <p>Pelayan kami menjana log operasi yang mungkin mengandungi alamat e-mel anda. Log ini digunakan untuk penyelesaian masalah dan tidak dikongsi dengan pihak ketiga.</p>
+
+        <h2>Kuki dan analitik</h2>
+        <p>costclerk.com tidak menggunakan kuki atau analitik penjejakan.</p>
+
+        <h2>Hak anda di bawah undang-undang perlindungan data peribadi Malaysia</h2>
+        <p>Di bawah undang-undang perlindungan data peribadi Malaysia, anda mempunyai hak untuk:</p>
+        <p><strong>Capaian</strong> — Meminta salinan data peribadi yang kami simpan tentang anda.</p>
+        <p><strong>Pembetulan</strong> — Meminta kami membetulkan sebarang data yang tidak tepat atau tidak lengkap.</p>
+        <p><strong>Penarikan balik persetujuan</strong> — Menarik balik persetujuan anda untuk kami memproses data anda pada bila-bila masa. Ini akan menyebabkan penamatan langganan CostClerk anda, kerana kami tidak dapat mengendalikan perkhidmatan tanpa memproses data invois.</p>
+        <p><strong>Pemadaman</strong> — Meminta kami memadamkan semua data peribadi anda daripada sistem kami.</p>
+        <p>Untuk melaksanakan mana-mana hak ini, e-mel kami di <a href="mailto:hello@costclerk.com">hello@costclerk.com</a>. Kami akan membalas dalam tempoh 21 hari.</p>
+
+        <h2>Tanggungjawab anda terhadap data pihak ketiga</h2>
+        <p>Invois yang anda majukan kepada CostClerk mungkin mengandungi data peribadi milik individu lain — seperti pelanggan, pembekal, atau subkontraktor anda (contohnya, nama mereka, alamat perniagaan, atau nombor SSM mereka).</p>
+        <p>Dengan memajukan invois ini, anda mengesahkan bahawa anda mempunyai hak untuk berkongsi maklumat ini dengan CostClerk bagi tujuan menjana laporan kos anda.</p>
+
+        <h2>Perubahan kepada dasar ini</h2>
+        <p>Kami mungkin mengemaskini dasar privasi ini dari semasa ke semasa. Jika kami membuat perubahan yang ketara, kami akan memberitahu anda melalui e-mel. Versi terkini akan sentiasa boleh didapati di costclerk.com/privacy.</p>
+
+        <h2>Hubungi kami</h2>
+        <p>Jika anda mempunyai sebarang soalan tentang dasar privasi ini atau cara kami mengendalikan data anda:</p>
+        <p><strong>CostClerk Services</strong> (SSM: 202603072114)<br><strong>E-mel:</strong> <a href="mailto:hello@costclerk.com">hello@costclerk.com</a><br><strong>Alamat:</strong> Selangor, Malaysia</p>
+
+        <p class="legal-effective">Dasar privasi ini (v1.0) berkuat kuasa mulai 17 Mac 2026.</p>
+      </div>
     </div>
   </div>
 
@@ -645,12 +750,19 @@
   <div class="page hidden" id="page-terms">
     <div class="legal-content">
       <div class="section-label">Terms and Conditions</div>
-      <h1 class="page-title" style="margin-bottom: 8px;">Terms and Conditions</h1>
+      <h1 class="page-title" style="margin-bottom: 8px;" id="terms-title">Terms and Conditions</h1>
       <div class="legal-meta">
         <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
         Version 1.0
       </div>
 
+      <div class="legal-lang-toggle">
+        <span id="terms-lang-en" class="active-lang" onclick="toggleLegalLang('terms','en')">English</span>
+        <span class="lang-divider">|</span>
+        <span id="terms-lang-bm" onclick="toggleLegalLang('terms','bm')">Bahasa Malaysia</span>
+      </div>
+
+      <div id="terms-en">
       <h2>What this document covers</h2>
       <p>These terms and conditions govern your use of CostClerk. By subscribing to CostClerk or forwarding invoices to our processing email address, you agree to these terms.</p>
       <p>If you do not agree with any part of these terms, do not use CostClerk.</p>
@@ -723,6 +835,84 @@
       <p><strong>CostClerk Services</strong> (SSM: 202603072114)<br><strong>Email:</strong> <a href="mailto:hello@costclerk.com">hello@costclerk.com</a><br><strong>Address:</strong> Selangor, Malaysia</p>
 
       <p class="legal-effective">These terms and conditions (v1.0) are effective as of 17 March 2026.</p>
+      </div>
+
+      <div id="terms-bm" class="legal-lang-hidden">
+        <p style="font-size: 13px; color: #9A958C; font-style: italic; margin-bottom: 24px;">Sekiranya terdapat percanggahan antara versi Bahasa Inggeris dan Bahasa Melayu bagi terma ini, versi Bahasa Inggeris akan digunapakai.</p>
+
+        <h2>Apa yang diliputi oleh dokumen ini</h2>
+        <p>Terma dan syarat ini mengawal penggunaan anda terhadap CostClerk. Dengan melanggan CostClerk atau memajukan invois ke alamat e-mel pemprosesan kami, anda bersetuju dengan terma ini.</p>
+        <p>Jika anda tidak bersetuju dengan mana-mana bahagian terma ini, jangan gunakan CostClerk.</p>
+
+        <h2>Apa yang CostClerk lakukan</h2>
+        <p>CostClerk ialah perkhidmatan automasi invois berasaskan langganan. Anda memajukan invois PDF ke alamat e-mel yang ditetapkan, dan CostClerk membaca serta memproses invois tersebut lalu menghantar semula pecahan kos mengikut projek dalam bentuk laporan CSV melalui e-mel.</p>
+        <p>CostClerk ialah alat untuk membantu pengesanan kos. Ia tidak memberikan nasihat perakaunan, percukaian, kewangan, atau undang-undang.</p>
+        <p>Kami mungkin mengubah suai, menambah baik, atau menghentikan ciri-ciri CostClerk dari semasa ke semasa bagi mengekalkan atau meningkatkan perkhidmatan.</p>
+
+        <h2>Langganan dan pembayaran</h2>
+        <p>CostClerk ditawarkan sebagai langganan bulanan pada kadar RM49/bulan. Pembayaran dibuat melalui kad kredit atau debit menerusi Stripe.</p>
+        <p>Setiap langganan merangkumi pemprosesan sehingga 20 invois sehari. Invois yang melebihi had ini tidak akan diproses sehingga hari berikutnya.</p>
+        <p>Langganan anda diperbaharui secara automatik setiap bulan melainkan anda membatalkannya. Untuk membatalkan, e-mel <a href="mailto:hello@costclerk.com">hello@costclerk.com</a>. Pembatalan berkuat kuasa pada akhir tempoh pengebilan semasa anda — anda akan terus mempunyai akses sehingga waktu tersebut.</p>
+        <p>Kami berhak menukar harga dengan notis bertulis 30 hari melalui e-mel. Penggunaan berterusan selepas perubahan harga dianggap sebagai penerimaan harga baharu.</p>
+        <p>Yuran langganan tidak boleh dikembalikan. Tiada bayaran balik separa diberikan untuk bahagian tempoh pengebilan yang tidak digunakan. Bayaran balik boleh dikeluarkan mengikut budi bicara kami semata-mata dalam keadaan luar biasa.</p>
+
+        <h2>Ketepatan laporan</h2>
+        <p>CostClerk menggunakan pembacaan dokumen berkuasa AI untuk mengekstrak data daripada invois anda. Walaupun kami berusaha untuk ketepatan, kami tidak dapat menjamin bahawa setiap invois akan dibaca dengan betul.</p>
+        <p><strong>Anda bertanggungjawab untuk menyemak semua laporan yang dijana oleh CostClerk sebelum bergantung kepadanya untuk sebarang keputusan perniagaan, kewangan, atau percukaian.</strong></p>
+        <p>CostClerk bukan pengganti perakaunan profesional. Laporan disediakan atas dasar "seadanya". Kami tidak menerima liabiliti bagi kesilapan, ketinggalan, atau salah tafsir dalam data invois yang dibaca.</p>
+
+        <h2>Tanggungjawab anda</h2>
+        <p>Dengan menggunakan CostClerk, anda bersetuju bahawa:</p>
+        <p>Akaun CostClerk anda dikenal pasti melalui alamat e-mel yang digunakan untuk menghantar invois. Anda bertanggungjawab untuk mengekalkan kawalan ke atas akaun e-mel tersebut.</p>
+        <p>Anda hanya akan memajukan invois yang anda diberi kuasa untuk berkongsi. Jika invois anda mengandungi data peribadi milik pihak ketiga (seperti pelanggan, pembekal, atau subkontraktor), anda bertanggungjawab untuk mempunyai hak untuk berkongsi data tersebut dengan CostClerk.</p>
+        <p>Anda tidak akan menggunakan CostClerk untuk sebarang tujuan yang menyalahi undang-undang, termasuk tetapi tidak terhad kepada menghantar dokumen palsu, dipalsukan, atau dicuri.</p>
+        <p>Anda tidak akan cuba membebankan, mengganggu, atau mencampuri sistem atau infrastruktur CostClerk.</p>
+        <p>Anda akan menyediakan alamat e-mel yang sah dan memastikan maklumat hubungan anda sentiasa dikemaskini.</p>
+
+        <h2>Ketersediaan dan masa operasi</h2>
+        <p>Kami berusaha untuk memastikan CostClerk berjalan dengan stabil, tetapi kami tidak menjamin masa operasi 100%. CostClerk mungkin tidak tersedia buat sementara waktu disebabkan penyelenggaraan, kemaskini, masalah infrastruktur, atau keadaan di luar kawalan kami.</p>
+        <p>Kami akan berusaha secara munasabah untuk memberitahu anda tentang masa henti yang dirancang terlebih dahulu melalui e-mel. Notis awal mungkin tidak dapat diberikan untuk gangguan yang tidak dirancang.</p>
+
+        <h2>Pengendalian data</h2>
+        <p>Data anda dikendalikan mengikut <a href="javascript:void(0)" onclick="navigateTo('privacy')">Dasar Privasi</a> kami. Dengan menggunakan CostClerk, anda juga bersetuju dengan terma dasar tersebut.</p>
+
+        <h2>Harta intelek</h2>
+        <p>CostClerk, termasuk nama, laman web, dan sistemnya, adalah hak milik pengendali. Anda tidak boleh menyalin, mengeluarkan semula, mengedar, mengubah suai, atau kejuruteraan songsang mana-mana bahagian CostClerk kecuali seperti yang dibenarkan oleh undang-undang.</p>
+        <p>Invois yang anda hantar dan laporan yang dijana daripadanya kekal sebagai hak milik anda. Kami tidak menuntut pemilikan ke atas data anda.</p>
+
+        <h2>Had liabiliti</h2>
+        <p>Setakat yang dibenarkan oleh undang-undang Malaysia:</p>
+        <p>CostClerk disediakan atas dasar "seadanya" dan "seperti yang tersedia", tanpa sebarang jaminan dalam apa jua bentuk, sama ada nyata atau tersirat, termasuk tetapi tidak terhad kepada ketepatan, kesesuaian untuk tujuan tertentu, atau ketersediaan tanpa gangguan.</p>
+        <p>Setakat yang dibenarkan sepenuhnya oleh undang-undang, jumlah agregat liabiliti CostClerk yang timbul daripada atau berkaitan dengan penggunaan anda terhadap perkhidmatan ini, sama ada dalam kontrak, tort (termasuk kecuaian), atau sebaliknya, tidak akan melebihi jumlah keseluruhan yang telah anda bayar kepada CostClerk dalam tempoh tiga (3) bulan sejurus sebelum peristiwa yang menimbulkan tuntutan.</p>
+        <p>CostClerk tidak bertanggungjawab ke atas sebarang kerosakan tidak langsung, sampingan, berbangkit, khas, atau punitif, termasuk tetapi tidak terhad kepada kehilangan keuntungan, kehilangan data, atau gangguan perniagaan, walaupun telah dimaklumkan tentang kemungkinan kerosakan tersebut.</p>
+        <p>CostClerk tidak bertanggungjawab ke atas kandungan, ketepatan, atau kesahihan sebarang data, dokumen, atau bahan pihak ketiga yang dihantar kepada atau diproses oleh perkhidmatan ini.</p>
+        <p>Tiada apa-apa dalam terma ini yang mengecualikan atau mengehadkan liabiliti kami bagi kematian atau kecederaan peribadi yang disebabkan oleh kecuaian kami, atau bagi penipuan atau salah nyata secara penipuan.</p>
+
+        <h2>Penyelesaian pertikaian</h2>
+        <p>Kedua-dua pihak bersetuju untuk terlebih dahulu cuba menyelesaikan sebarang pertikaian secara tidak formal dengan menghubungi pihak yang satu lagi melalui e-mel. Jika pertikaian tidak diselesaikan dalam tempoh 30 hari dari hubungan pertama, mana-mana pihak boleh meneruskan dengan tindakan undang-undang formal.</p>
+
+        <h2>Penamatan</h2>
+        <p>Kami boleh menggantung atau menamatkan akses anda kepada CostClerk pada bila-bila masa, dengan atau tanpa notis, termasuk tetapi tidak terhad kepada keadaan berikut:</p>
+        <p>Anda melanggar mana-mana terma ini.</p>
+        <p>Anda menggunakan CostClerk dengan cara yang boleh memudaratkan perkhidmatan, pengguna lain, atau infrastruktur kami.</p>
+        <p>Langganan anda tamat tempoh atau tidak diperbaharui. Tanpa langganan aktif, e-mel anda dikeluarkan daripada senarai putih dan invois tidak akan diproses lagi.</p>
+        <p>Selepas penamatan, data anda dikendalikan mengikut <a href="javascript:void(0)" onclick="navigateTo('privacy')">Dasar Privasi</a> kami. Kami tidak diwajibkan untuk menyediakan akses berterusan kepada data anda selepas penamatan.</p>
+        <p>Anda boleh membatalkan langganan anda pada bila-bila masa dengan menghubungi kami di <a href="mailto:hello@costclerk.com">hello@costclerk.com</a>. Kami akan memproses permintaan pembatalan dalam tempoh masa yang munasabah. Pembatalan berkuat kuasa pada akhir tempoh pengebilan semasa anda.</p>
+        <p>Mana-mana peruntukan terma ini yang sifatnya perlu kekal selepas penamatan akan terus terpakai, termasuk tetapi tidak terhad kepada had liabiliti dan penafian.</p>
+
+        <h2>Perubahan kepada terma ini</h2>
+        <p>Kami mungkin mengemaskini terma ini dari semasa ke semasa. Jika kami membuat perubahan yang ketara, kami akan memberitahu anda melalui e-mel sekurang-kurangnya 14 hari sebelum perubahan berkuat kuasa. Versi terkini akan sentiasa boleh didapati di costclerk.com/terms.</p>
+        <p>Penggunaan berterusan CostClerk selepas perubahan berkuat kuasa dianggap sebagai penerimaan terma yang dikemaskini.</p>
+
+        <h2>Undang-undang yang mentadbir</h2>
+        <p>Terma ini ditadbir oleh undang-undang Malaysia. Sebarang pertikaian yang timbul daripada terma ini atau penggunaan anda terhadap CostClerk adalah tertakluk kepada bidang kuasa mahkamah Malaysia.</p>
+
+        <h2>Hubungi kami</h2>
+        <p>Jika anda mempunyai sebarang soalan tentang terma ini:</p>
+        <p><strong>CostClerk Services</strong> (SSM: 202603072114)<br><strong>E-mel:</strong> <a href="mailto:hello@costclerk.com">hello@costclerk.com</a><br><strong>Alamat:</strong> Selangor, Malaysia</p>
+
+        <p class="legal-effective">Terma dan syarat ini (v1.0) berkuat kuasa mulai 17 Mac 2026.</p>
+      </div>
     </div>
   </div>
 
@@ -981,6 +1171,18 @@
       } catch (err) {
         showModalError('Could not connect. Please check your connection and try again.');
         setCheckoutLoading(false);
+      }
+    }
+
+    function toggleLegalLang(page, lang) {
+      document.getElementById(page + '-en').classList.toggle('legal-lang-hidden', lang !== 'en');
+      document.getElementById(page + '-bm').classList.toggle('legal-lang-hidden', lang !== 'bm');
+      document.getElementById(page + '-lang-en').classList.toggle('active-lang', lang === 'en');
+      document.getElementById(page + '-lang-bm').classList.toggle('active-lang', lang === 'bm');
+      if (page === 'privacy') {
+        document.getElementById('privacy-title').textContent = lang === 'bm' ? 'Dasar Privasi' : 'Privacy Policy';
+      } else if (page === 'terms') {
+        document.getElementById('terms-title').textContent = lang === 'bm' ? 'Terma dan Syarat' : 'Terms and Conditions';
       }
     }
 
