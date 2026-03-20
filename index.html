@@ -198,7 +198,7 @@
     .legal-effective { font-size: 13px; color: #9A958C; margin-top: 40px; padding-top: 24px; border-top: 1px solid #E8F0EE; font-style: italic; }
 
     /* Language toggle */
-    .legal-lang-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+    .legal-lang-toggle { display: flex; align-items: center; gap: 8px; margin-top: 12px; margin-bottom: 0; }
     .legal-lang-toggle span { font-size: 14px; color: #9A958C; cursor: pointer; transition: color 0.2s; }
     .legal-lang-toggle span.active-lang { color: #1A1A18; font-weight: 600; }
     .legal-lang-toggle .lang-divider { color: #DEE8E5; cursor: default; }
@@ -557,12 +557,11 @@
       <div class="legal-meta">
         <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
         Version 1.0
-      </div>
-
-      <div class="legal-lang-toggle">
-        <span id="privacy-lang-en" class="active-lang" onclick="toggleLegalLang('privacy','en')">English</span>
-        <span class="lang-divider">|</span>
-        <span id="privacy-lang-bm" onclick="toggleLegalLang('privacy','bm')">Bahasa Malaysia</span>
+        <div class="legal-lang-toggle">
+          <span id="privacy-lang-en" class="active-lang" onclick="toggleLegalLang('privacy','en')">English</span>
+          <span class="lang-divider">|</span>
+          <span id="privacy-lang-bm" onclick="toggleLegalLang('privacy','bm')">Bahasa Malaysia</span>
+        </div>
       </div>
 
       <div id="privacy-en">
@@ -754,12 +753,11 @@
       <div class="legal-meta">
         <strong>CostClerk</strong> · Last updated: 17 March 2026<br>
         Version 1.0
-      </div>
-
-      <div class="legal-lang-toggle">
-        <span id="terms-lang-en" class="active-lang" onclick="toggleLegalLang('terms','en')">English</span>
-        <span class="lang-divider">|</span>
-        <span id="terms-lang-bm" onclick="toggleLegalLang('terms','bm')">Bahasa Malaysia</span>
+        <div class="legal-lang-toggle">
+          <span id="terms-lang-en" class="active-lang" onclick="toggleLegalLang('terms','en')">English</span>
+          <span class="lang-divider">|</span>
+          <span id="terms-lang-bm" onclick="toggleLegalLang('terms','bm')">Bahasa Malaysia</span>
+        </div>
       </div>
 
       <div id="terms-en">
