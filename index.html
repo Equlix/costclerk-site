@@ -922,6 +922,22 @@
     </div>
   </div>
 
+  <!-- MANAGE SUBSCRIPTION -->
+  <div class="page hidden" id="page-manage">
+    <div class="contact-form">
+      <div class="section-label">Account</div>
+      <h1 class="page-title">Manage Subscription</h1>
+      <p class="page-subtitle">Update your payment method or cancel your subscription.</p>
+      <div style="margin-top: 32px;">
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input type="email" class="form-input" id="manage-email" placeholder="your@email.com" />
+        </div>
+        <div class="modal-error" id="manage-error" style="margin-top: 0; margin-bottom: 12px;"></div>
+        <button class="btn-primary" id="manage-btn" onclick="submitManageSubscription()" style="width: 100%; padding: 14px 28px;">Manage Subscription</button>
+      </div>
+    </div>
+  </div>
 
   <!-- CHECKOUT MODAL -->
   <div class="modal-overlay" id="checkout-modal" onclick="handleModalOverlayClick(event)">
@@ -981,6 +997,7 @@
           <div class="footer-col-title">Legal</div>
           <button class="footer-link" onclick="navigateTo('privacy')">Privacy Policy</button>
           <button class="footer-link" onclick="navigateTo('terms')">Terms</button>
+          <button class="footer-link" onclick="navigateTo('manage')">Manage Subscription</button>
         </div>
       </div>
     </div>
@@ -1040,7 +1057,7 @@
     }
 
     // Navigation
-    const pageMap = { home: 'page-home', how: 'page-how', pricing: 'page-pricing', faq: 'page-faq', contact: 'page-contact', about: 'page-about', privacy: 'page-privacy', terms: 'page-terms' };
+    const pageMap = { home: 'page-home', how: 'page-how', pricing: 'page-pricing', faq: 'page-faq', contact: 'page-contact', about: 'page-about', privacy: 'page-privacy', terms: 'page-terms', manage: 'page-manage' };
     let currentPage = 'home';
 
     function navigateTo(page) {
@@ -1196,6 +1213,48 @@
         ? '<strong>CostClerk</strong> · Kemaskini terakhir: 17 Mac 2026<br>Versi 1.0'
         : '<strong>CostClerk</strong> · Last updated: 17 March 2026<br>Version 1.0';
       metaEl.appendChild(toggle);
+    }
+
+    // Manage Subscription
+    let manageSubmitting = false;
+    async function submitManageSubscription() {
+      if (manageSubmitting) return;
+      const email = document.getElementById('manage-email').value.trim();
+      const errEl = document.getElementById('manage-error');
+      errEl.classList.remove('visible');
+      errEl.textContent = '';
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errEl.textContent = 'Please enter a valid email address.';
+        errEl.classList.add('visible');
+        return;
+      }
+      const btn = document.getElementById('manage-btn');
+      manageSubmitting = true;
+      btn.disabled = true;
+      btn.textContent = 'Loading...';
+      try {
+        const res = await fetch(`${BACKEND_URL}/manage-subscription`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.url) {
+          errEl.textContent = data.error || 'Something went wrong. Please try again.';
+          errEl.classList.add('visible');
+          btn.disabled = false;
+          btn.textContent = 'Manage Subscription';
+          manageSubmitting = false;
+          return;
+        }
+        window.location.href = data.url;
+      } catch (err) {
+        errEl.textContent = 'Could not connect. Please check your connection and try again.';
+        errEl.classList.add('visible');
+        btn.disabled = false;
+        btn.textContent = 'Manage Subscription';
+        manageSubmitting = false;
+      }
     }
 
     // Show success banner after Stripe redirect
